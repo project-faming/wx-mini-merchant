@@ -1,0 +1,16 @@
+.default_class {
+  text-align: center;
+  padding-top: 40rpx;
+}
+.default_class ._img {
+  width: 320rpx;
+  height: 320rpx;
+}
+.default_class ._span {
+  font-size: 28rpx;
+  color: #999999;
+  font-weight: bold;
+  margin-top: 20rpx;
+  display: block;
+}
+

@@ -1,0 +1,87 @@
+.group_detil_class {
+  padding: 40rpx;
+}
+.group_detil_class .list_ul {
+  font-size: 36rpx;
+  color: #333333;
+  line-height: 60rpx;
+}
+.group_detil_class .list_ul .manytext {
+  font-size: 40rpx;
+  color: #EE0A24;
+}
+.chieflist_class {
+  padding: 40rpx;
+}
+.chieflist_class .paddingnont {
+  margin-bottom: 40rpx;
+}
+.chieflist_class .default_class {
+  text-align: center;
+  padding-top: 40rpx;
+}
+.chieflist_class .default_class ._img {
+  width: 320rpx;
+  height: 320rpx;
+}
+.chieflist_class .default_class ._span {
+  font-size: 28rpx;
+  color: #999999;
+  font-weight: bold;
+  margin-top: 20rpx;
+  display: block;
+}
+.chieflist_class .list_table_div .tablelist_div {
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  border-bottom: 2rpx solid #ccc;
+  padding-bottom: 20rpx;
+}
+.chieflist_class .list_table_div .tablelist_div .img_userimg {
+  width: 220rpx;
+  height: 230rpx;
+  float: left;
+  margin-right: 20rpx;
+  border: 1px solid #ccc;
+  border-radius: 10rpx;
+}
+.chieflist_class .list_table_div .tablelist_div .img_userimg ._img {
+  width: 100%;
+  height: 100%;
+}
+.chieflist_class .list_table_div .tablelist_div .right_text {
+  float: left;
+  width: calc(100% - 245rpx);
+  position: relative;
+  height: 230rpx;
+}
+.chieflist_class .list_table_div .tablelist_div .right_text ._span {
+  display: block;
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.chieflist_class .list_table_div .tablelist_div .right_text ._span font {
+  font-weight: 400;
+  color: #999999;
+}
+.chieflist_class .list_table_div .tablelist_div .right_text .postion_button {
+  position: absolute;
+  right: 4rpx;
+  bottom: 0;
+  background: #85c43f;
+  font-size: 24rpx;
+  border-radius: 40rpx;
+  padding: 6rpx 20rpx;
+  color: #fff;
+}
+.chieflist_class .list_table_div .tablelist_div:last-child {
+  border: none;
+}
+.chieflist_class .writeoclass {
+  padding: 40rpx;
+}
+

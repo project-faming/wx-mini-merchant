@@ -1,0 +1,9 @@
+.groupwork_detailes .imgs_view {
+  margin-bottom: 40rpx;
+  height: 400rpx;
+}
+.groupwork_detailes .imgs_view ._img {
+  width: 100%;
+  height: 100%;
+}
+
