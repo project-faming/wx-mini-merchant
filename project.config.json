@@ -1,5 +1,5 @@
 {
-  "miniprogramRoot": "./unpackage/dist/build/mp-weixin",
+  "miniprogramRoot": "unpackage/dist/build/mp-weixin/",
   "description": "项目配置文件",
   "packOptions": {
     "ignore": []
@@ -17,7 +17,7 @@
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
-    "uglifyFileName": false,
+    "uglifyFileName": true,
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
