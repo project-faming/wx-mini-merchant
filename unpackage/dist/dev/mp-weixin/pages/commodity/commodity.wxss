@@ -95,7 +95,8 @@
   position: fixed;
   bottom: 50rpx;
   left: 20rpx;
-  box-shadow: 0 2rpx 10rpx 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2rpx 10rpx 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2rpx 10rpx 0 rgba(0, 0, 0, 0.2);
   background: #85c43f;
   border: none;
   border-radius: 100rpx;
