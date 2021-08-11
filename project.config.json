@@ -1,5 +1,4 @@
 {
-  "miniprogramRoot": "unpackage/dist/build/mp-weixin/",
   "description": "项目配置文件",
   "packOptions": {
     "ignore": []
@@ -23,9 +22,9 @@
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
+    "useMultiFrameRuntime": false,
+    "useApiHook": false,
+    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
