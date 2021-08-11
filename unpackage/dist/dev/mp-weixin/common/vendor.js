@@ -1814,6 +1814,7 @@ function createSubpackageApp(vm) {
   if (isFn(appOptions.onHide) && wx.onAppHide) {
     wx.onAppHide(function () {for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {args[_key6] = arguments[_key6];}
       vm.__call_hook('onHide', args);
+<<<<<<< HEAD
     });
   }
   if (isFn(appOptions.onLaunch)) {
@@ -1833,10 +1834,34 @@ function createPlugin(vm) {
   if (isFn(appOptions.onHide) && wx.onAppHide) {
     wx.onAppHide(function () {for (var _len8 = arguments.length, args = new Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {args[_key8] = arguments[_key8];}
       appOptions.onHide.apply(vm, args);
+=======
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
     });
   }
   if (isFn(appOptions.onLaunch)) {
     var args = wx.getLaunchOptionsSync && wx.getLaunchOptionsSync();
+<<<<<<< HEAD
+=======
+    vm.__call_hook('onLaunch', args);
+  }
+  return vm;
+}
+
+function createPlugin(vm) {
+  var appOptions = parseApp(vm);
+  if (isFn(appOptions.onShow) && wx.onAppShow) {
+    wx.onAppShow(function () {for (var _len7 = arguments.length, args = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {args[_key7] = arguments[_key7];}
+      appOptions.onShow.apply(vm, args);
+    });
+  }
+  if (isFn(appOptions.onHide) && wx.onAppHide) {
+    wx.onAppHide(function () {for (var _len8 = arguments.length, args = new Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {args[_key8] = arguments[_key8];}
+      appOptions.onHide.apply(vm, args);
+    });
+  }
+  if (isFn(appOptions.onLaunch)) {
+    var args = wx.getLaunchOptionsSync && wx.getLaunchOptionsSync();
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
     appOptions.onLaunch.call(vm, args);
   }
   return vm;
@@ -2060,9 +2085,15 @@ function normalizeComponent (
 /***/ }),
 
 /***/ 119:
+<<<<<<< HEAD
 /*!*****************************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/static/img/upload_img.png ***!
   \*****************************************************************************/
+=======
+/*!**************************************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/static/img/upload_img.png ***!
+  \**************************************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2071,9 +2102,15 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 /***/ }),
 
 /***/ 15:
+<<<<<<< HEAD
 /*!***************************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/static/img/Chiefimg.png ***!
   \***************************************************************************/
+=======
+/*!************************************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/static/img/Chiefimg.png ***!
+  \************************************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2873,9 +2910,15 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 16:
+<<<<<<< HEAD
 /*!******************************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/static/img/purchaseimg.png ***!
   \******************************************************************************/
+=======
+/*!***************************************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/static/img/purchaseimg.png ***!
+  \***************************************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2884,9 +2927,15 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACO
 /***/ }),
 
 /***/ 17:
+<<<<<<< HEAD
 /*!******************************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/static/img/Group_order.png ***!
   \******************************************************************************/
+=======
+/*!***************************************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/static/img/Group_order.png ***!
+  \***************************************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -8944,9 +8993,15 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 20:
+<<<<<<< HEAD
 /*!************************************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/wxcomponents/vant/toast/toast.js ***!
   \************************************************************************************/
+=======
+/*!*********************************************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/wxcomponents/vant/toast/toast.js ***!
+  \*********************************************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9036,9 +9091,15 @@ exports.default = Toast;
 /***/ }),
 
 /***/ 21:
+<<<<<<< HEAD
 /*!*************************************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/wxcomponents/vant/common/utils.js ***!
   \*************************************************************************************/
+=======
+/*!**********************************************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/wxcomponents/vant/common/utils.js ***!
+  \**********************************************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9088,9 +9149,15 @@ exports.addUnit = addUnit;
 /***/ }),
 
 /***/ 22:
+<<<<<<< HEAD
 /*!************************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/static/api/config.js ***!
   \************************************************************************/
+=======
+/*!*********************************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/static/api/config.js ***!
+  \*********************************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9100,7 +9167,11 @@ exports.addUnit = addUnit;
 
 var _toast = _interopRequireDefault(__webpack_require__(/*! ../../wxcomponents/vant/toast/toast */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} // const baseurl = 'http://arge.linde.xin/b/api/v1/'
 // const baseurl = 'https://laijianshengxian.com/b/api/v1/'
+<<<<<<< HEAD
 var baseurl = 'https://linde.xin/b/api/v1/'; // 公共的请求
+=======
+var baseurl = 'https://youjiacang.com/b/api/v1/'; // 公共的请求
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 var request = function request(options) {options.url = baseurl + options.url;
   if (options.type !== 'login') {
     try {
@@ -9182,9 +9253,15 @@ module.exports = g;
 /***/ }),
 
 /***/ 37:
+<<<<<<< HEAD
 /*!********************************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/static/img/image-default.png ***!
   \********************************************************************************/
+=======
+/*!*****************************************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/static/img/image-default.png ***!
+  \*****************************************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9193,9 +9270,15 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAFACAMAAAD6
 /***/ }),
 
 /***/ 4:
+<<<<<<< HEAD
 /*!**************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/pages.json ***!
   \**************************************************************/
+=======
+/*!***********************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/pages.json ***!
+  \***********************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -9204,9 +9287,15 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAFACAMAAAD6
 /***/ }),
 
 /***/ 40:
+<<<<<<< HEAD
 /*!**************************************************************************************!*\
   !*** /Users/mac/project/xlj-git/wx-mini-merchant/wxcomponents/vant/dialog/dialog.js ***!
   \**************************************************************************************/
+=======
+/*!***********************************************************************************!*\
+  !*** /project/xlj-git/faming/wx-mini-merchant/wxcomponents/vant/dialog/dialog.js ***!
+  \***********************************************************************************/
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

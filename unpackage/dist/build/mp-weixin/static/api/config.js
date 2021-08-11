@@ -1,6 +1,10 @@
 // const baseurl = 'http://arge.linde.xin/b/api/v1/'
 // const baseurl = 'https://laijianshengxian.com/b/api/v1/'
+<<<<<<< HEAD
 const baseurl = 'https://linde.xin/b/api/v1/'
+=======
+const baseurl = 'https://youjiacang.com/b/api/v1/'
+>>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 import Toast from '../../wxcomponents/vant/toast/toast';
 // 公共的请求
 const request = function (options) {
