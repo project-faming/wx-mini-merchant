@@ -6,7 +6,6 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
-<<<<<<< HEAD
     "enhance": true,
     "postcss": true,
     "preloadBackgroundData": false,
@@ -54,29 +53,6 @@
       "list": []
     },
     "miniprogram": {
-=======
-    "minified": true
-  },
-  "compileType": "miniprogram",
-  "libVersion": "",
-  "appid": "wx98996fe1ead1a9a5",
-  "projectname": "wx-mini-merchant",
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "current": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": -1,
->>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
       "list": []
     }
   }

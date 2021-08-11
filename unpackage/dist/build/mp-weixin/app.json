@@ -63,10 +63,7 @@
       }
     ]
   },
-<<<<<<< HEAD
-=======
   "permission": {},
->>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
   "usingComponents": {
     "demo-block": "/wxcomponents/vant/demo-block/index",
     "van-action-sheet": "/wxcomponents/vant/action-sheet/index",
@@ -114,10 +111,6 @@
     "van-collapse": "/wxcomponents/vant/collapse/index",
     "van-collapse-item": "/wxcomponents/vant/collapse-item/index",
     "van-picker": "/wxcomponents/vant/picker/index"
-<<<<<<< HEAD
   },
   "sitemapLocation": "sitemap.json"
-=======
-  }
->>>>>>> e0ce3172f3a81910845254a71cb140d34a706a30
 }
