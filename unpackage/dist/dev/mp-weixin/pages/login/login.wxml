@@ -1,3 +1,0 @@
-<view class="content_loginclass"><view class="img_topimg"><image class="img_class" src="../../static/img/login_time.png" mode="widthFix"></image><view class="font_text">来健鲜生是全新打造的B2C（Business-to-Consumer，商业零售)购物平台
-			旨在整合国内外广大品牌商、生产商，为商家和消费者之间提供一站式产品购销解决方案。
-			商城专注经营精品时尚的女装、男装、女鞋、男鞋、化妆品、运动鞋、时尚配饰、箱包、数码、家电等数万种百货商品。</view></view><view class="button_bottom"><button open-type="getPhoneNumber" data-event-opts="{{[['getphonenumber',[['getPhoneNumber',['$event']]]]]}}" bindgetphonenumber="__e">获取手机号</button><view data-event-opts="{{[['tap',[['getonut',['$event']]]]]}}" class="our_lintindex" bindtap="__e">返回首页</view></view><van-toast vue-id="35a7246c-1" id="van-toast" data-com-type="wx" bind:__l="__l"></van-toast></view>

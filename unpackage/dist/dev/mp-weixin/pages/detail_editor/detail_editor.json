@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "详情编辑",
-  "usingComponents": {
-    "t-color-picker": "/components/t-color-picker"
-  }
-}
