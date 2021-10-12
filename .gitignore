@@ -1,4 +1,4 @@
 ##ignore file##
-/unpackage
+unpackage/
 /utils/dev.server.js
 node_modules/
