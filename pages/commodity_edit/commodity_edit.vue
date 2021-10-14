@@ -171,8 +171,6 @@
 					}else{  //接口请求失败的处理
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
-				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
 				});
 			},
 			editor_detil(html){//编辑详情
@@ -209,8 +207,6 @@
 					}else{  //接口请求失败的处理
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
-				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
 				});
 			},
 			uploadimg_up(){//上传图片
@@ -282,8 +278,6 @@
 					}else{  //接口请求失败的处理
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
-				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
 				});
 			},
 		}

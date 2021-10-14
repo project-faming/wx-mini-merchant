@@ -129,7 +129,6 @@
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
 				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
 				});
 			},
 			qrcode_scan(){//扫一扫获取条码
@@ -168,7 +167,6 @@
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
 				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
 				});
 				
 			},

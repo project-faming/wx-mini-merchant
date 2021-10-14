@@ -70,7 +70,6 @@
 											uni.showToast({title:res.data.message,icon:'none'})
 										}
 									}).catch(err=>{
-										uni.showToast({title:'请求出错',icon:'none'})
 									})
 								}
 							}
@@ -78,7 +77,6 @@
 							uni.showToast({title:res.data.message,icon:'none'})
 						}
 					}).catch(err=>{
-						uni.showToast({title:'请求出错',icon:'none'})
 					})
 			},
 			handleSetting(e){//是否授权
@@ -125,7 +123,6 @@
 							uni.showToast({title:res.data.message,icon:'none'})
 						}
 					}).catch(err=>{
-						uni.showToast({title:'请求出错',icon:'none'})
 					});
 				}
 				uni.showModal({

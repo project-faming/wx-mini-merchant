@@ -182,9 +182,7 @@
 					}else{  //接口请求失败的处理
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
-				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
-				});
+				})
 			},
 			getteamlist(){//团长列表
 				let phone= this.userPhone;
@@ -213,9 +211,7 @@
 					}else{  //接口请求失败的处理
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
-				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
-				});
+				})
 			}
 		}
 	}

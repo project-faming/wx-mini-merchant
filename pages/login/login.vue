@@ -3,7 +3,7 @@
 		<view class="img_topimg">
 			<image src="../../static/img/login_time.png" mode="widthFix" class="img_class"></image>
 			<view class="font_text">
-				来健鲜生是全新打造的B2C（Business-to-Consumer，商业零售)购物平台
+				优加是全新打造的B2C（Business-to-Consumer，商业零售)购物平台
 				旨在整合国内外广大品牌商、生产商，为商家和消费者之间提供一站式产品购销解决方案。
 				商城专注经营精品时尚的女装、男装、女鞋、男鞋、化妆品、运动鞋、时尚配饰、箱包、数码、家电等数万种百货商品。
 			</view>
@@ -72,7 +72,6 @@
 									uni.showToast({title:'授权失败，请重试',icon:'none'})
 								}
 							}).catch(err=>{
-								uni.showToast({title:'请求出错',icon:'none'})
 							})
 						} else {
 							Toast(res.errMsg)

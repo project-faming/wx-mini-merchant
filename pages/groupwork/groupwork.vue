@@ -123,7 +123,6 @@
 						}
 					}
 				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
 					this.isLoadMore=false
 					if(this.page>1){
 						this.page-=1
