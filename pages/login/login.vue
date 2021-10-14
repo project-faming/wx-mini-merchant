@@ -72,7 +72,6 @@
 									uni.showToast({title:result.data.message,icon:'none'})
 								}
 							}).catch(err=>{
-								uni.showToast({title:'请求出错',icon:'none'})
 							})
 						} else {
 							Toast(res.errMsg)

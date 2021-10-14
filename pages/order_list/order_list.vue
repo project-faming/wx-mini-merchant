@@ -153,7 +153,6 @@
 						}
 					}
 				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
 					this.isLoadMore=false
 					if(this.page>1){
 						this.page-=1
@@ -201,9 +200,7 @@
 					}else{  //接口请求失败的处理
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
-				}).catch(err=>{
-					uni.showToast({title:'请求出错',icon:'none'})
-				});
+				})
 				
 			},
 			close_express(){//取消发货

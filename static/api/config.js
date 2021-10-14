@@ -36,6 +36,7 @@ const request = function (options) {
 				resolve(res);
 			},
 			error: err => {
+                uni.showToast({title:'网路不在线~',icon:'none'})
 				reject(err);
 			},
 			complete: () => {
