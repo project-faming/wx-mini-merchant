@@ -10,17 +10,17 @@
 						<open-data class="name line1" type="userNickName"></open-data>
 					</view>
 					<view class='id'>手机号：{{userInfo.mobile}}</view>
-					<view class='id'>门店：{{userInfo.name}}</view>
+					<view class='id'>门店：{{userInfo.brandName}}</view>
 				</view>
 			</view>
 		</view>
-		<view class="qrcode_shop">
+		<!-- <view class="qrcode_shop">
 			<view class="title_font">
 				我的店铺二维码
 			</view>
 			<view class="qrcode_img_view">
 				<view class="qrcode_img">
-					<img :src="userInfo.brandUrl">
+					<img :src="userInfo.picUrl">
 				</view>
 				<button v-if="openSettingBtnHidden" class="purple_btn" @click="saveEwm">
 					保存到相册
@@ -29,7 +29,7 @@
 					保存到相册
 				</button>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -59,7 +59,7 @@
 								let img = this.ewmImg;
 								if(!img){
 									api.request({
-										url: 'account/getCode',
+										url: 'account/qrCode',
 										method: 'post'
 									}).then(res=>{
 										if(res.data.code==0){
