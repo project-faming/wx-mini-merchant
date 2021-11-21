@@ -72,7 +72,7 @@
 			this.getTableList()
 		},
 		onReachBottom(){  //上拉触底函数
-			if(!this.isLoadMore){  //此处判断，上锁，防止重复请求
+			if(this.active == 0 && !this.isLoadMore){  //此处判断，上锁，防止重复请求
 				this.isLoadMore=true
 				this.page+=1
 				this.getTableList()
