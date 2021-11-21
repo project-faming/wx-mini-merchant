@@ -4,37 +4,42 @@
 		  <van-tab title="门店商品" name='0'></van-tab>
 		  <van-tab title="平台商品" name='1'></van-tab>
 		</van-tabs>
-		<van-search :value="SearchName" placeholder="搜索商品名称" @search="onSearch" @clear="onSearch"/>
-		<view class="default_class" v-if="tabledatalist.length===0">
-			<img src="../../static/img/image-default.png">
-			<span>暂无数据</span>
-		</view>
-		<view v-else>
-			<view class="list_table_div">
-				<view class="tablelist_div" v-for="(item,index) in tabledatalist" :key="index">
-					<!-- commoditydetails  跳转详情事件 -->
-					<view class="img_userimg" @click="commedit(item.id)">
-						<img :src="item.picUrl">
-					</view>
-					<view class="right_text">
-						<span class="name_text" @click="commedit(item.id)">{{item.name}}</span>
-						<span class="text_jianjie">{{item.brief}}</span>
-						<span class="originalprice">￥{{item.counterPrice}}</span>
-						<span class="presentprice">￥{{item.retailPrice}}</span>
-						<span class="status_text">状态：{{item.isOnline == 2?'下架':item.isOnline == 1?'上架':''}}</span>
-					</view>
-					<view class="postion_button" >
-						<van-button class="buttonrout" v-if="active == 1 && item.isOnline == 2" color="#85c43f" plain round size="mini" @click="putshelves(item.id)">上架</van-button>
-						<van-button class="buttonrout" v-if="active == 1 && item.isOnline == 1" color="#ee0a24" plain round size="mini" @click="offshelf(item.id)">下架</van-button>
-						<van-button class="buttonrout" v-if="active == 0" color="#85c43f" plain round size="mini" @click="commedit(item.id)">编辑</van-button>
+		<view v-if="active == 0">
+			<van-search :value="SearchName" placeholder="搜索商品名称" @search="onSearch" @clear="onSearch"/>
+			<view class="default_class" v-if="tabledatalist.length===0">
+				<img src="../../static/img/image-default.png">
+				<span>暂无数据</span>
+			</view>
+			<view v-else>
+				<view class="list_table_div">
+					<view class="tablelist_div" v-for="(item,index) in tabledatalist" :key="index">
+						<!-- commoditydetails  跳转详情事件 -->
+						<view class="img_userimg" @click="commedit(item.id)">
+							<img :src="item.picUrl">
+						</view>
+						<view class="right_text">
+							<span class="name_text" @click="commedit(item.id)">{{item.name}}</span>
+							<span class="text_jianjie">{{item.brief}}</span>
+							<span class="originalprice">￥{{item.counterPrice}}</span>
+							<span class="presentprice">￥{{item.retailPrice}}</span>
+							<span class="status_text">状态：{{item.isOnline == 2?'下架':item.isOnline == 1?'上架':''}}</span>
+						</view>
+						<view class="postion_button" >
+							<van-button class="buttonrout" v-if="active == 1 && item.isOnline == 2" color="#85c43f" plain round size="mini" @click="putshelves(item.id)">上架</van-button>
+							<van-button class="buttonrout" v-if="active == 1 && item.isOnline == 1" color="#ee0a24" plain round size="mini" @click="offshelf(item.id)">下架</van-button>
+							<van-button class="buttonrout" v-if="active == 0" color="#85c43f" plain round size="mini" @click="commedit(item.id)">编辑</van-button>
+						</view>
 					</view>
 				</view>
+				<view v-show="isLoadMore">
+					<uni-load-more :status="loadStatus" ></uni-load-more>
+				</view>
 			</view>
-			<view v-show="isLoadMore">
-				<uni-load-more :status="loadStatus" ></uni-load-more>
-			</view>
+			<view class="buttonrightpost" @click="add_groupwork">新增</view>
 		</view>
-		<view v-if="active == 0" class="buttonrightpost" @click="add_groupwork">新增</view>
+		<view v-else>
+			<platform-store></platform-store>
+		</view>
 		<van-toast id="van-toast" />
 		<van-dialog id="van-dialog" confirm-button-color="#85c43f"/>
 	</view>
@@ -44,7 +49,11 @@
 	import Toast from '../../wxcomponents/vant/toast/toast';
 	import Dialog  from '../../wxcomponents/vant/dialog/dialog';
 	import api from '../../static/api/config.js'
+	import PlatformStore from './platform-store.vue'
 	export default {
+		components:{
+			PlatformStore
+		},
 		data() {
 			return {
 				active:'0',

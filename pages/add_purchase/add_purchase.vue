@@ -44,6 +44,46 @@
 					url: '../select_product/select_product?type=caigou'
 				});
 			},
+			postPay(orderId){
+				api.request({
+					url: 'dts-brand-purchase/prepay',
+					method: 'post',
+					data:{
+						orderId:orderId,
+					}
+				}).then(res=>{
+					if(res.data.code==0){
+						console.log(res.data.data)
+						let payData = res.data.data
+						debugger
+						try{
+							wx.requestPayment({
+								"timeStamp": payData.jsConfig.timeStamp,
+								"nonceStr": payData.jsConfig.nonceStr,
+								"package":payData.jsConfig.packages,
+								"signType": payData.jsConfig.signType,
+								"paySign": payData.jsConfig.paySign,
+								"success":(payRes)=>{
+									 Toast('支付成功');
+								},
+								"fail":(payRes)=>{
+										Toast('支付失败');
+								},
+								"complete":(payRes)=>{
+									uni.redirectTo({
+										url: '../purchase_list/purchase_list'
+									});
+								}
+							})
+						}catch(e){
+							console.log(e)
+							//TODO handle the exception
+						}
+					}else{
+						uni.showToast({title:res.data.message,icon:'none'})
+					}
+				})
+			},
 			sumberbutton(){
 				let goodsId = this.commodityid;//商品id
 				let goodsName = this.commodityNmae;//商品名称
@@ -79,10 +119,7 @@
 					}
 				}).then(res=>{
 					if(res.data.code==0){
-						Toast('申请成功');
-						uni.navigateTo({
-							url: '../purchase_list/purchase_list'
-						});
+						this.postPay(res.data.data)
 					}else{  //接口请求失败的处理
 						uni.showToast({title:res.data.message,icon:'none'})
 					}

@@ -1,10 +1,16 @@
 // const baseurl = 'http://arge.linde.xin/b/api/v1/'
 // const baseurl = 'https://laijianshengxian.com/b/api/v1/'
 const baseurl = 'https://linde.xin/b/api/v1/'
+const baseurlC = 'https://linde.xin'
 import Toast from '../../wxcomponents/vant/toast/toast';
 // 公共的请求
 const request = function (options) {
-	options.url = baseurl + options.url;
+	let url = ''
+	url = `${baseurl}${options.url}` ;
+	if(options.c == 1){ // 兼容分类处理
+		url = `${baseurlC}${options.url}`
+	}
+	options.url = url
 	if (options.type !== 'login') {
 		try {
 			const token = uni.getStorageSync('token');
