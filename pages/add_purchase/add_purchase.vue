@@ -55,14 +55,13 @@
 					if(res.data.code==0){
 						console.log(res.data.data)
 						let payData = res.data.data
-						debugger
 						try{
 							wx.requestPayment({
-								"timeStamp": payData.jsConfig.timeStamp,
-								"nonceStr": payData.jsConfig.nonceStr,
-								"package":payData.jsConfig.packages,
-								"signType": payData.jsConfig.signType,
-								"paySign": payData.jsConfig.paySign,
+								"timeStamp": payData.timeStamp,
+								"nonceStr": payData.nonceStr,
+								"package":payData.packageValue,
+								"signType": payData.signType,
+								"paySign": payData.paySign,
 								"success":(payRes)=>{
 									 Toast('支付成功');
 								},
@@ -70,9 +69,12 @@
 										Toast('支付失败');
 								},
 								"complete":(payRes)=>{
-									uni.redirectTo({
-										url: '../purchase_list/purchase_list'
-									});
+									setTimeout(()=>{
+										uni.redirectTo({
+											url: '../purchase_list/purchase_list'
+										});
+									},3000)
+									
 								}
 							})
 						}catch(e){
