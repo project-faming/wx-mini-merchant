@@ -4,7 +4,7 @@
 		  <van-tab title="门店商品" name='0'></van-tab>
 		  <van-tab title="平台商品" name='1'></van-tab>
 		</van-tabs>
-		<view v-if="active == 0">
+		<!-- <view v-if="active == 0"> -->
 			<van-search :value="SearchName" placeholder="搜索商品名称" @search="onSearch" @clear="onSearch"/>
 			<view class="default_class" v-if="tabledatalist.length===0">
 				<img src="../../static/img/image-default.png">
@@ -36,10 +36,10 @@
 				</view>
 			</view>
 			<view class="buttonrightpost" @click="add_groupwork">新增</view>
-		</view>
-		<view v-else>
+		<!-- </view> -->
+		<!-- <view v-else>
 			<platform-store></platform-store>
-		</view>
+		</view> -->
 		<van-toast id="van-toast" />
 		<van-dialog id="van-dialog" confirm-button-color="#85c43f"/>
 	</view>
@@ -52,7 +52,7 @@
 	import PlatformStore from './platform-store.vue'
 	export default {
 		components:{
-			PlatformStore
+			// PlatformStore
 		},
 		data() {
 			return {

@@ -10,7 +10,7 @@
 			<van-field :value="numvalue" @input="numvalue = $event.detail" type="number" label="数量" placeholder="请输入数量" clearable :border="false"/>
 		</van-cell-group>
 		<view class="btton_shop_com">
-			<button class="sumber_button" @click="sumberbutton">确 认</button>
+			<button class="sumber_button" @click="sumberbutton" :disabled="isDiasble">确 认</button>
 		</view>
 		<van-toast id="van-toast" />
 	</view>
@@ -27,6 +27,7 @@
 				Pricevalue:'',//价格
 				describe:'',//描述
 				numvalue:'',//数量
+				isDiasble:false
 			}
 		},
 		onShow() {
@@ -45,6 +46,9 @@
 				});
 			},
 			postPay(orderId){
+				wx.showLoading({
+					title: '加载中...',
+				})
 				api.request({
 					url: 'dts-brand-purchase/prepay',
 					method: 'post',
@@ -84,6 +88,8 @@
 					}else{
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
+				}).finally(()=>{
+					wx.hideLoading();
 				})
 			},
 			sumberbutton(){
@@ -108,7 +114,10 @@
 					Toast('数量不能为空');
 					return;
 				}
-				
+				wx.showLoading({
+					title: '加载中...',
+				})
+				this.isDiasble = true
 				api.request({
 					url: 'dts-brand-purchase/create',
 					method: 'post',
@@ -125,6 +134,11 @@
 					}else{  //接口请求失败的处理
 						uni.showToast({title:res.data.message,icon:'none'})
 					}
+				}).finally(()=>{
+					wx.hideLoading();
+					setTimeout(()=>{
+						this.isDiasble = false
+					},1500)
 				})
 			},
 		}
