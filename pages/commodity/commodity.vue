@@ -4,13 +4,14 @@
 		  <van-tab title="门店商品" name='0'></van-tab>
 		  <van-tab title="平台商品" name='1'></van-tab>
 		</van-tabs>
-		<!-- <view v-if="active == 0"> -->
+		<view v-if="active == 0">
 			<van-search :value="SearchName" placeholder="搜索商品名称" @search="onSearch" @clear="onSearch"/>
 			<view class="default_class" v-if="tabledatalist.length===0">
 				<img src="../../static/img/image-default.png">
 				<span>暂无数据</span>
 			</view>
 			<view v-else>
+				
 				<view class="list_table_div">
 					<view class="tablelist_div" v-for="(item,index) in tabledatalist" :key="index">
 						<!-- commoditydetails  跳转详情事件 -->
@@ -35,11 +36,11 @@
 					<uni-load-more :status="loadStatus" ></uni-load-more>
 				</view>
 			</view>
-			<view class="buttonrightpost" @click="add_groupwork">新增</view>
-		<!-- </view> -->
-		<!-- <view v-else>
-			<platform-store></platform-store>
-		</view> -->
+			<view v-if="active == 0" class="buttonrightpost" @click="add_groupwork">新增</view>
+		</view>
+		<view v-else>
+					<platform-store></platform-store>
+				</view>
 		<van-toast id="van-toast" />
 		<van-dialog id="van-dialog" confirm-button-color="#85c43f"/>
 	</view>
@@ -52,7 +53,7 @@
 	import PlatformStore from './platform-store.vue'
 	export default {
 		components:{
-			// PlatformStore
+			PlatformStore
 		},
 		data() {
 			return {
@@ -72,7 +73,7 @@
 			this.getTableList()
 		},
 		onReachBottom(){  //上拉触底函数
-			if(this.active == 0 && !this.isLoadMore){  //此处判断，上锁，防止重复请求
+			if(!this.isLoadMore){  //此处判断，上锁，防止重复请求
 				this.isLoadMore=true
 				this.page+=1
 				this.getTableList()
