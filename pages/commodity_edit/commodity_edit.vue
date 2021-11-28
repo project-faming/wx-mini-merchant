@@ -7,7 +7,7 @@
 			<van-field :value="formdata.unit" label="单位" placeholder="请输入单位(如:件/个等)" clearable @input="formdata.unit = $event.detail"/>
 			<van-field :value="formdata.brief" label="简介" clearable placeholder="请输入简介" @input="formdata.brief = $event.detail"/>
 			<van-field :value="formdata.keywords" label="关键字" placeholder="请输入关键字" clearable @input="formdata.keywords = $event.detail"/>
-			<view class="group_field_class">
+			<!-- <view class="group_field_class">
 				<view class="group_border">
 					<view class="left_view">主图</view>
 					<view class="upload_view" @click="uploadimg_up">
@@ -18,8 +18,8 @@
 						<img class="imgslooks" v-else :src="formdata.picUrl">
 					</view>
 				</view>
-			</view>
-			<view class="group_field_class">
+			</view> -->
+			<!-- <view class="group_field_class">
 				<view class="group_border">
 					<view class="left_view">分类</view>
 					<view class="right_view" @click="categoryshow = true">
@@ -27,7 +27,7 @@
 						<span v-else>{{formdata.categoryName}}</span>
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<view class="group_field_class">
 				<view class="group_border">
 					<view class="left_view">状态</view>
