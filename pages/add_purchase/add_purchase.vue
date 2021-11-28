@@ -30,11 +30,19 @@
 				isDiasble:false
 			}
 		},
+		onLoad(option){
+			console.log(option)
+			if(option.id){
+				this.commodityNmae = option.name
+				this.commodityid = option.id
+			}
+			
+		},
 		onShow() {
 			const pages = getCurrentPages()
 			const currPage = pages[pages.length - 1] // 当前页
 			let data = currPage.data.commoditydata
-			if(data){
+			if(data && data.id){
 				this.commodityNmae = data.name
 				this.commodityid = data.id
 			}

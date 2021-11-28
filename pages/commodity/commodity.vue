@@ -4,28 +4,26 @@
 		  <van-tab title="门店商品" name='0'></van-tab>
 		  <van-tab title="平台商品" name='1'></van-tab>
 		</van-tabs>
-		<view v-if="active == 0">
 			<van-search :value="SearchName" placeholder="搜索商品名称" @search="onSearch" @clear="onSearch"/>
 			<view class="default_class" v-if="tabledatalist.length===0">
 				<img src="../../static/img/image-default.png">
 				<span>暂无数据</span>
 			</view>
 			<view v-else>
-				
 				<view class="list_table_div">
-					<view class="tablelist_div" v-for="(item,index) in tabledatalist" :key="index">
+					<view class="tablelist_div" v-for="(item,index) in tabledatalist" :key="index" @click="commedit(item)">
 						<!-- commoditydetails  跳转详情事件 -->
-						<view class="img_userimg" @click="commedit(item.id)">
+						<view class="img_userimg" >
 							<img :src="item.picUrl">
 						</view>
 						<view class="right_text">
-							<span class="name_text" @click="commedit(item.id)">{{item.name}}</span>
+							<span class="name_text">{{item.name}}</span>
 							<span class="text_jianjie">{{item.brief}}</span>
 							<span class="originalprice">￥{{item.counterPrice}}</span>
 							<span class="presentprice">￥{{item.retailPrice}}</span>
-							<span class="status_text">状态：{{item.isOnline == 2?'下架':item.isOnline == 1?'上架':''}}</span>
+							<span class="status_text" v-if="active == 0">状态：{{item.isOnline == 2?'下架':item.isOnline == 1?'上架':''}}</span>
 						</view>
-						<view class="postion_button" >
+						<view class="postion_button" v-if="active == 0">
 							<van-button class="buttonrout" v-if="active == 1 && item.isOnline == 2" color="#85c43f" plain round size="mini" @click="putshelves(item.id)">上架</van-button>
 							<van-button class="buttonrout" v-if="active == 1 && item.isOnline == 1" color="#ee0a24" plain round size="mini" @click="offshelf(item.id)">下架</van-button>
 							<van-button class="buttonrout" v-if="active == 0" color="#85c43f" plain round size="mini" @click="commedit(item.id)">编辑</van-button>
@@ -37,10 +35,12 @@
 				</view>
 			</view>
 			<view v-if="active == 0" class="buttonrightpost" @click="add_groupwork">新增</view>
-		</view>
-		<view v-else>
-					<platform-store></platform-store>
-				</view>
+		<view v-if="active == 1" class="buttonrightpost buttonrightpost-class" @click="$refs.popup.open()">分类</view>
+		<uni-popup ref="popup" type="top" background-color="#fff">
+			<platform-store @emitClick="handleClick"></platform-store>
+		</uni-popup>
+					<!-- <platform-store></platform-store> -->
+			
 		<van-toast id="van-toast" />
 		<van-dialog id="van-dialog" confirm-button-color="#85c43f"/>
 	</view>
@@ -60,13 +60,14 @@
 				active:'0',
 				SearchName:'',
 				tabledatalist:[],
-								
+				id:null,		
 				page:1,
 				pagesize:10,
 				loadStatus:'loading',  //加载样式：more-加载前样式，loading-加载中样式，nomore-没有数据样式
 				isLoadMore:false,  //是否加载中
 			}
 		},
+		
 		onShow() {
 			this.tabledatalist = [],
 			this.page = 1,
@@ -79,14 +80,26 @@
 				this.getTableList()
 			}
 		},
+		onHide(){
+			this.id=null	
+		},
 		methods: {
+			handleClick(id){
+				this.id=id
+				this.page = 1,
+				this.tabledatalist = [],
+				this.getTableList()
+				this.$refs.popup.close()
+			},
 			onSearch(event){//搜索
 				this.SearchName = event.detail;
 				this.tabledatalist = [],
+				this.id=null
 				this.page = 1,
 				this.getTableList()
 			},
 			onClick(event) {//筛选
+				this.id=null
 				this.active = event.detail.name;
 				this.tabledatalist = [],
 				this.page = 1,
@@ -116,6 +129,7 @@
 						pageNum:this.page,
 						pageSize:this.pagesize,
 						goodsName:name,
+						categoryId:this.id
 					},
 				}).then(res=>{
 					if(res.data.code==0){
@@ -150,10 +164,16 @@
 					url: '../commodity_edit/commodity_edit'
 				});
 			},
-			commedit(id){//编辑
-				uni.navigateTo({
-					url: '../commodity_edit/commodity_edit?id='+id
-				});
+			commedit(item){//编辑
+				if(this.active == 0){
+					uni.navigateTo({
+						url:`../commodity_edit/commodity_edit?id=${item.id}`
+					});
+				}else{
+					uni.navigateTo({
+						url: `/pages/add_purchase/add_purchase?id=${item.id}&name=${item.name}`
+					});
+				}
 			},
 			putshelves(id){//上架
 				Dialog.confirm({
@@ -322,6 +342,10 @@
 			font-size: 26rpx;
 			overflow: hidden;
 			text-align: center;
+		}
+		.buttonrightpost-class{
+			top: 280rpx;
+			left: 80%;
 		}
 	}
 </style>

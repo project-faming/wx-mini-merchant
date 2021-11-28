@@ -13,17 +13,26 @@
 			  :thumb="item.picUrl"
 			/>
 		</view>
+		<view class="buttonrightpost" @click="$refs.popup.open()">分类</view>
+		<uni-popup ref="popup" type="top" background-color="#fff">
+			<platform-store @emitClick="handleClick"></platform-store>
+		</uni-popup>
 	</view>
 </template>
 
 <script>
 	import api from '../../static/api/config.js'
 	import Toast from '../../wxcomponents/vant/toast/toast';
+	import PlatformStore from '../commodity/platform-store.vue'
 	export default {
+		components:{
+			PlatformStore
+		},
 		data() {
 			return {
-				shopname: '',
+				shopname: null,
 				tabledatalist:[],
+				id:null,
 				page:1,
 				pagesize:10,
 				apiurl:'',
@@ -46,8 +55,16 @@
 			}
 		},
 		methods: {
+			handleClick(id){
+					this.id=id
+					this.page = 1,
+					this.tabledatalist = [],
+					this.getShopList()
+					this.$refs.popup.close()
+			},
 			onSearch(event){//搜索
 				this.shopname = event.detail;
+				this.id=null
 				this.tabledatalist = [],
 				this.page = 1,
 				this.getShopList()
@@ -60,6 +77,7 @@
 						pageNum:this.page,
 						pageSize:this.pagesize,
 						goodsName:this.shopname,
+						categoryId:this.id
 					}
 				}).then(res=>{
 					if(res.data.code==0){
@@ -103,7 +121,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.default_class{
 		text-align: center;
 		padding-top: 40rpx;
@@ -118,5 +136,21 @@
 			margin-top: 20rpx;
 			display: block;
 		}
+	}
+	 .buttonrightpost{
+		position: fixed;
+		top: 280rpx;
+		left: 80%;
+		box-shadow:0 2rpx 10rpx 0 rgba(0,0,0,0.2);
+		background: #85c43f;
+		border: none;
+		border-radius: 100rpx;
+		width: 100rpx;
+		height: 100rpx;
+		color: #fff;
+		line-height: 100rpx;
+		font-size: 26rpx;
+		overflow: hidden;
+		text-align: center;
 	}
 </style>

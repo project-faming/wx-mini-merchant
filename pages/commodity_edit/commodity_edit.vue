@@ -165,8 +165,8 @@
 						let str = JSON.stringify(jsonobj);
 						let text = new RegExp('label', 'g');
 						let id = new RegExp('value', 'g');
-						let newStr1 = str.replace(text, 'text');
-						let newStr = newStr1.replace(id, 'id');
+						let newStr1 = str && str.replace(text, 'text');
+						let newStr = newStr1 && newStr1.replace(id, 'id');
 						this.categorylist = JSON.parse(newStr);
 					}else{  //接口请求失败的处理
 						uni.showToast({title:res.data.message,icon:'none'})

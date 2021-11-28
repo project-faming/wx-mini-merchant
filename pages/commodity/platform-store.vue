@@ -15,10 +15,10 @@
 			<text class="line"></text>
 		  </view>
 		  <view class="bd">
-			<navigator :url="`/pages/category/category?id=${item.id}`" class="item" :class="{'last':(index+1) % 3 == 0 }" v-for="(item,index) in currentSubCategoryList" :key="index">
+			<view @click="handleClick(item.id)" class="item" :class="{'last':(index+1) % 3 == 0 }" v-for="(item,index) in currentSubCategoryList" :key="index">
 			  <image class="icon" :src="item.picUrl"></image>
 			  <text class="txt jhx_f2">{{item.name}}</text>
-			</navigator>
+			</view>
 		  </view>
 		</scroll-view>
 	  </view>
@@ -79,6 +79,9 @@
 					  this.currentCategory=res.data.data.currentCategory,
 					  this.currentSubCategoryList=res.data.data.currentSubCategory
 				  })
+			  },
+			  handleClick(id){
+				  this.$emit('emitClick',id)
 			  }
 		  }
 	}
