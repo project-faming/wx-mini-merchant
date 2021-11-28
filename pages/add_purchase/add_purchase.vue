@@ -5,7 +5,7 @@
 				<button class="select_button" @click="selectproduct">选择商品</button>
 			</view>
 			<van-field :value="commodityNmae" readonly clearable label="商品名称" placeholder="请输入商品名称"/>
-			<van-field :value="Pricevalue" @input="Pricevalue = $event.detail" type="digit" label="价格" clearable placeholder="请输入价格"/>
+			<van-field :value="Pricevalue" @input="Pricevalue = $event.detail" type="digit" label="价格" clearable placeholder="请输入价格" disabled/>
 			<van-field :value="describe" @input="describe = $event.detail" type="textarea" label="商品描述" :autosize="{maxHeight: 100, minHeight: 80}" clearable placeholder="请输入商品描述"/>
 			<van-field :value="numvalue" @input="numvalue = $event.detail" type="number" label="数量" placeholder="请输入数量" clearable :border="false"/>
 		</van-cell-group>
@@ -35,6 +35,7 @@
 			if(option.id){
 				this.commodityNmae = option.name
 				this.commodityid = option.id
+				this.Pricevalue = option.retailPrice
 			}
 			
 		},
@@ -45,6 +46,7 @@
 			if(data && data.id){
 				this.commodityNmae = data.name
 				this.commodityid = data.id
+				this.Pricevalue = data.retailPrice
 			}
 		},
 		methods: {

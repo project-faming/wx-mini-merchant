@@ -171,7 +171,7 @@
 					});
 				}else{
 					uni.navigateTo({
-						url: `/pages/add_purchase/add_purchase?id=${item.id}&name=${item.name}`
+						url: `/pages/add_purchase/add_purchase?id=${item.id}&name=${item.name}&retailPrice=${item.retailPrice}`
 					});
 				}
 			},
