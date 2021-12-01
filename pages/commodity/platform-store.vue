@@ -1,5 +1,5 @@
 <template>
-	<view class="container">
+	<view class="container" @touchmove.stop.prevent="moveHandle" :style="{height:`${height}px`}">
 	  <view class="catalog">
 		<scroll-view class="nav" scroll-y="true">
 		  <view class="item" :class="{'active' : currentCategory.id == item.id }" v-for="(item,index) in categoryList "  :key="index" @click="getCurrentCategory(item)">{{item.name}}</view>
@@ -36,54 +36,61 @@
 				scrollLeft: 0,
 				scrollTop: 0,
 				// goodsCount: 0,
-				scrollHeight: 0
+				scrollHeight: 0,
+				height:500
 			}
 		},
 		onLoad(){
 			this.getCatalog();
 		},
 		onPullDownRefresh() {
-			// wx.showNavigationBarLoading() //在标题栏中显示加载
-			this.getCatalog();
-			// wx.hideNavigationBarLoading() //完成停止加载
-			// wx.stopPullDownRefresh() //停止下拉刷新
+		this.getCatalog();
+		},
+		mounted(){
+		  this.getCatalog();
+		  uni.getSystemInfo({
+		      success:(res)=> {
+		          console.log(res.windowHeight);
+		  		this.height = res.windowHeight-100
+		      }
+		  });
+		},
+		methods:{
+		  moveHandle(){
+			  return false
 		  },
-		  mounted(){
-			  this.getCatalog();
+		  getCatalog(){
+			   wx.showLoading({
+				title: '加载中...',
+			  })
+			  api.request({
+				url: '/c/wx/catalog/index',
+				method: 'get',
+				c:1
+			  }).then((res)=>{
+					this.categoryList=res.data.data.categoryList,
+					this.currentCategory=res.data.data.currentCategory,
+					this.currentSubCategoryList=res.data.data.currentSubCategory
+					wx.hideLoading();
+			  })
 		  },
-		  methods:{
-			  getCatalog(){
-				   wx.showLoading({
-					title: '加载中...',
-				  })
-				  api.request({
-					url: '/c/wx/catalog/index',
-					method: 'get',
-					c:1
-				  }).then((res)=>{
-						this.categoryList=res.data.data.categoryList,
-						this.currentCategory=res.data.data.currentCategory,
-						this.currentSubCategoryList=res.data.data.currentSubCategory
-						wx.hideLoading();
-				  })
-			  },
-			  getCurrentCategory(item){
-				  api.request({
-					url: '/c/wx/catalog/current',
-					method: 'get',
-					c:1,
-					data:{
-						id: item.id
-					}
-				  }).then(res=>{
-					  this.currentCategory=res.data.data.currentCategory,
-					  this.currentSubCategoryList=res.data.data.currentSubCategory
-				  })
-			  },
-			  handleClick(id){
-				  this.$emit('emitClick',id)
-			  }
+		  getCurrentCategory(item){
+			  api.request({
+				url: '/c/wx/catalog/current',
+				method: 'get',
+				c:1,
+				data:{
+					id: item.id
+				}
+			  }).then(res=>{
+				  this.currentCategory=res.data.data.currentCategory,
+				  this.currentSubCategoryList=res.data.data.currentSubCategory
+			  })
+		  },
+		  handleClick(id){
+			  this.$emit('emitClick',id)
 		  }
+		}
 	}
 </script>
 
@@ -91,10 +98,10 @@
 	
 	.container {
 	  background: #f9f9f9;
-	  height: 100%;
 	  width: 100%;
 	  display: flex;
 	  flex-direction: column;
+	  overflow-y: auto;
 	}
 	.catalog {
 	  flex: 1;
