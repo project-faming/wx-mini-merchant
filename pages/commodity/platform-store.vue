@@ -50,7 +50,6 @@
 		  this.getCatalog();
 		  uni.getSystemInfo({
 		      success:(res)=> {
-		          console.log(res.windowHeight);
 		  		this.height = res.windowHeight-100
 		      }
 		  });
