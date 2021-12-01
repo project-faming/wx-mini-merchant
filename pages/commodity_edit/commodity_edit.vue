@@ -141,7 +141,7 @@
 			}
 		},
 		onLoad(option) {
-			if(option.id !='undefined' && option.id !=''&&option.id != null && option.id != undefined && option.id !='null'){
+			if(option.id){
 				this.getcommdetil(option.id);
 			}
 		},
@@ -218,17 +218,15 @@
 						const tempFilePaths = res.tempFilePaths;    //拿到选择的图片，是一个数组
 						const token = uni.getStorageSync('token');
 						uni.uploadFile({
-						  url:api.baseurl+'teamGoods/upload',		//post请求的地址
+						  url:`${api.baseurlC}/a/admin/storage/create`,		//post请求的地址
 						  filePath:tempFilePaths[0],
 						  header:{
 							'X-Dts-Token' : token
 						  },
 						  name:'file',	
 						  success: (res) => {
-							  var obj = JSON.parse(res.data);
-							  if(obj.code == 0){
-								this.formdata.picUrl = obj.data.url;
-							  }
+							var obj = JSON.parse(res.data);
+							this.formdata.picUrl = obj.data.url;
 						  }
 						})
 					})
