@@ -197,18 +197,18 @@
 	    "selectedColor": "#85c43f",
 	    "color": "#666",
 	    "list": [
-	      {
-	        "pagePath": "pages/index/index",
-	        "iconPath": "static/img/home.png",
-	        "selectedIconPath": "static/img/home@selected.png",
-	        "text": "首页"
-	      },
-	      {
-	        "pagePath": "pages/groupwork/groupwork",
-	        "iconPath": "static/img/category.png",
-	        "selectedIconPath": "static/img/category@selected.png",
-	        "text": "拼团"
-	      },
+	      // {
+	      //   "pagePath": "pages/index/index",
+	      //   "iconPath": "static/img/home.png",
+	      //   "selectedIconPath": "static/img/home@selected.png",
+	      //   "text": "首页"
+	      // },
+	      // {
+	      //   "pagePath": "pages/groupwork/groupwork",
+	      //   "iconPath": "static/img/category.png",
+	      //   "selectedIconPath": "static/img/category@selected.png",
+	      //   "text": "拼团"
+	      // },
 	      {
 	        "pagePath": "pages/commodity/commodity",
 	        "iconPath": "static/img/commodity.png",
