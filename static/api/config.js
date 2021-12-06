@@ -55,5 +55,6 @@ const request = function (options) {
 }
 export default {
 	baseurl,
+	baseurlC,
 	request
 }

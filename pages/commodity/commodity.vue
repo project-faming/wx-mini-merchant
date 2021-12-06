@@ -26,7 +26,7 @@
 						<view class="postion_button" v-if="active == 0">
 							<van-button class="buttonrout" v-if="active == 1 && item.isOnline == 2" color="#85c43f" plain round size="mini" @click="putshelves(item.id)">上架</van-button>
 							<van-button class="buttonrout" v-if="active == 1 && item.isOnline == 1" color="#ee0a24" plain round size="mini" @click="offshelf(item.id)">下架</van-button>
-							<van-button class="buttonrout" v-if="active == 0" color="#85c43f" plain round size="mini" @click="commedit(item.id)">编辑</van-button>
+							<van-button class="buttonrout" v-if="active == 0" color="#85c43f" plain round size="mini" @click="commedit(item)">编辑</van-button>
 						</view>
 					</view>
 				</view>
@@ -170,8 +170,9 @@
 						url:`../commodity_edit/commodity_edit?id=${item.id}`
 					});
 				}else{
+					let data = JSON.stringify(item)
 					uni.navigateTo({
-						url: `/pages/add_purchase/add_purchase?id=${item.id}&name=${item.name}&retailPrice=${item.retailPrice}`
+						url: `/pages/add_purchase/add_purchase?item=${data}`
 					});
 				}
 			},

@@ -7,7 +7,7 @@
 			<van-field :value="formdata.unit" label="单位" placeholder="请输入单位(如:件/个等)" clearable @input="formdata.unit = $event.detail"/>
 			<van-field :value="formdata.brief" label="简介" clearable placeholder="请输入简介" @input="formdata.brief = $event.detail"/>
 			<van-field :value="formdata.keywords" label="关键字" placeholder="请输入关键字" clearable @input="formdata.keywords = $event.detail"/>
-			<!-- <view class="group_field_class">
+			<view class="group_field_class">
 				<view class="group_border">
 					<view class="left_view">主图</view>
 					<view class="upload_view" @click="uploadimg_up">
@@ -18,7 +18,7 @@
 						<img class="imgslooks" v-else :src="formdata.picUrl">
 					</view>
 				</view>
-			</view> -->
+			</view>
 			<!-- <view class="group_field_class">
 				<view class="group_border">
 					<view class="left_view">分类</view>
@@ -141,7 +141,7 @@
 			}
 		},
 		onLoad(option) {
-			if(option.id !='undefined' && option.id !=''&&option.id != null && option.id != undefined && option.id !='null'){
+			if(option.id){
 				this.getcommdetil(option.id);
 			}
 		},
@@ -152,7 +152,7 @@
 			if(data){
 				this.formdata.detail = decodeURIComponent(data)
 			}
-			this.getcategory();
+			// this.getcategory();
 		},
 		methods: {
 			getcategory(){//分类
@@ -218,17 +218,15 @@
 						const tempFilePaths = res.tempFilePaths;    //拿到选择的图片，是一个数组
 						const token = uni.getStorageSync('token');
 						uni.uploadFile({
-						  url:api.baseurl+'teamGoods/upload',		//post请求的地址
+						  url:`${api.baseurlC}/a/admin/storage/create`,		//post请求的地址
 						  filePath:tempFilePaths[0],
 						  header:{
 							'X-Dts-Token' : token
 						  },
 						  name:'file',	
 						  success: (res) => {
-							  var obj = JSON.parse(res.data);
-							  if(obj.code == 0){
-								this.formdata.picUrl = obj.data.url;
-							  }
+							var obj = JSON.parse(res.data);
+							this.formdata.picUrl = obj.data.url;
 						  }
 						})
 					})

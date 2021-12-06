@@ -4,9 +4,22 @@
 			<view class="btton_shop_com">
 				<button class="select_button" @click="selectproduct">选择商品</button>
 			</view>
-			<van-field :value="commodityNmae" readonly clearable label="商品名称" placeholder="请输入商品名称"/>
-			<van-field :value="Pricevalue" @input="Pricevalue = $event.detail" type="digit" label="价格" clearable placeholder="请输入价格" disabled/>
-			<van-field :value="describe" @input="describe = $event.detail" type="textarea" label="商品描述" :autosize="{maxHeight: 100, minHeight: 80}" clearable placeholder="请输入商品描述"/>
+			<view class="detail">
+				<label class="detail-label">商品图片</label>
+				<image class="detail-image" v-if="detailData.picUrl" :src="detailData.picUrl" mode="aspectFill"></image>
+			</view>
+			<van-field :value="commodityNmae" disabled label="商品名称" />
+			<van-field label="商品简介" :value="detailData.brief" disabled ></van-field>
+			<view class="detail">
+				<label class="detail-label">商品描述</label>
+				<rich-text class="detail-content" :nodes="detailData.detail"></rich-text>
+			</view>
+			
+			<van-field label="商品关键字" :value="detailData.keywords" disabled ></van-field>
+			
+			<van-field label="商品单位" :value="detailData.unit" disabled ></van-field>
+			
+			<van-field :value="Pricevalue" @input="Pricevalue = $event.detail" type="digit" label="价格" disabled/>
 			<van-field :value="numvalue" @input="numvalue = $event.detail" type="number" label="数量" placeholder="请输入数量" clearable :border="false"/>
 		</van-cell-group>
 		<view class="btton_shop_com">
@@ -22,22 +35,32 @@
 	export default {
 		data() {
 			return {
+				
 				commodityNmae:'',//商品名称
 				commodityid:'',//商品id
 				Pricevalue:'',//价格
 				describe:'',//描述
 				numvalue:'',//数量
-				isDiasble:false
+				isDiasble:false,
+				detailData:{
+					brief:'',// 商品简介
+					detail:'',//商品详细介绍
+					keywords:'',// 商品关键字
+					picUrl:'', // 商品图片
+					unit:'',// 商品单位
+				}
 			}
 		},
 		onLoad(option){
 			console.log(option)
-			if(option.id){
-				this.commodityNmae = option.name
-				this.commodityid = option.id
-				this.Pricevalue = option.retailPrice
+			if(option && option.item){
+				let data = JSON.parse(option.item)
+				this.commodityNmae = data.name
+				this.commodityid = data.id
+				this.Pricevalue = data.retailPrice
+				const {brief,detail,keywords,picUrl,unit} = data
+				this.detailData = {...this.detailData,brief,detail,keywords,picUrl,unit}
 			}
-			
 		},
 		onShow() {
 			const pages = getCurrentPages()
@@ -47,6 +70,8 @@
 				this.commodityNmae = data.name
 				this.commodityid = data.id
 				this.Pricevalue = data.retailPrice
+				const {brief,detail,keywords,picUrl,unit} = data
+				this.detailData = {...this.detailData,brief,detail,keywords,picUrl,unit}
 			}
 		},
 		methods: {
@@ -106,7 +131,7 @@
 				let goodsId = this.commodityid;//商品id
 				let goodsName = this.commodityNmae;//商品名称
 				let goodsPrice = this.Pricevalue;//价格
-				let describe = this.describe;//描述
+				// let describe = this.describe;//描述
 				let total = this.numvalue;//数量
 				if(!goodsId){
 					Toast('商品不能为空');
@@ -135,7 +160,7 @@
 						goodsId:goodsId,
 						goodsName:goodsName,
 						goodsPrice:goodsPrice,
-						describe:describe,
+						describe:this.detailData.detail,
 						total:total,
 					}
 				}).then(res=>{
@@ -155,7 +180,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.btton_shop_com{
 		padding: 30rpx;
 		.select_button{
@@ -175,5 +200,44 @@
 			line-height: 90rpx;
 			border: none;
 		}
+	}
+	.detail{
+		padding: 20rpx 32rpx;
+		display: flex;
+		justify-content: flex-start;
+		position: relative;
+		&::after{
+			content: '';
+			position: absolute;
+			pointer-events: none;
+			top: auto;
+			right: 0;
+			bottom: 0;
+			left: 16px;
+			border-bottom: 1rpx solid #ebedf0;
+			transform: scaleY(0.5);
+		}
+		.detail-label{
+			font-size: 28rpx;
+			color: #323233;
+			display: block;
+			width: 180rpx;
+		}
+		.detail-content{
+			flex: 1;
+			display: block;
+			font-size: 28rpx;
+			min-height: 80rox;
+			max-height: 128rpx;
+			line-height: 44rpx;
+			overflow-y: auto;
+			color: #969799;
+		}
+		.detail-image{
+			display: block;
+			width: 220rpx;
+			height:220rpx
+		}
+		
 	}
 </style>
