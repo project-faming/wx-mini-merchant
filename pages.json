@@ -216,7 +216,7 @@
 	        "text": "商品"
 	      }, 
 		  {
-	        "pagePath": "pages/order_list/order_list",
+	        "pagePath": "pages/purchase_list/purchase_list",
 	        "iconPath": "static/img/order.png",
 	        "selectedIconPath": "static/img/order@selected.png",
 	        "text": "订单"
