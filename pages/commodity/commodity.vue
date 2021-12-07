@@ -67,15 +67,11 @@
 				isLoadMore:false,  //是否加载中
 			}
 		},
-		onLoad(){
+		
+		onShow() {
 			this.tabledatalist = [],
 			this.page = 1,
 			this.getTableList()
-		},
-		onShow() {
-			// this.tabledatalist = [],
-			// this.page = 1,
-			// this.getTableList()
 		},
 		onReachBottom(){  //上拉触底函数
 			if(!this.isLoadMore){  //此处判断，上锁，防止重复请求
