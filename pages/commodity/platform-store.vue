@@ -71,7 +71,9 @@
 					this.categoryList=res.data.data.categoryList,
 					this.currentCategory=res.data.data.currentCategory,
 					this.currentSubCategoryList=res.data.data.currentSubCategory
-					wx.hideLoading();
+					
+			  }).finally(()=>{
+				  wx.hideLoading();
 			  })
 		  },
 		  getCurrentCategory(item){

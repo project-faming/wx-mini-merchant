@@ -38,9 +38,7 @@
 		<view v-if="active == 1" class="buttonrightpost buttonrightpost-class" @click="$refs.popup.open()">分类</view>
 		<uni-popup ref="popup" type="top" background-color="#fff">
 			<platform-store @emitClick="handleClick"></platform-store>
-		</uni-popup>
-					<!-- <platform-store></platform-store> -->
-			
+		</uni-popup>	
 		<van-toast id="van-toast" />
 		<van-dialog id="van-dialog" confirm-button-color="#85c43f"/>
 	</view>
@@ -157,7 +155,7 @@
 					if(this.page>1){
 						this.page-=1
 					}
-				});
+				})
 			},
 			add_groupwork(){//商品管理
 				uni.navigateTo({

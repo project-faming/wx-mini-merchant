@@ -18,12 +18,13 @@ const request = function (options) {
 				options.header = {
 					'X-Dts-Token': token
 				};
-			} else {
-				uni.navigateTo({
-					url: '../../pages/login/login'
-				});
-				return;
 			}
+			 // else {
+			// 	uni.navigateTo({
+			// 		url: '/pages/login/login'
+			// 	});
+			// 	// return;
+			// }
 		} catch (err) {
 			Toast('请求失败')
 		}
@@ -35,7 +36,7 @@ const request = function (options) {
 				if (res.data != '') {
 					if (res.data.code == 40003 || res.data.code == 40004) {
 						uni.navigateTo({
-							url: '../../pages/login/login'
+							url: '/pages/login/login'
 						});
 					}
 				}
