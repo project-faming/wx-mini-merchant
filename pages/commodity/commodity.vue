@@ -1,9 +1,9 @@
 <template>
 	<view class="chieflist_class" >
-		<!-- <van-tabs type="card" :active="active" @click="onClick" color="#85c43f">
+		<van-tabs type="card" :active="active" @click="onClick" color="#85c43f">
 		  <van-tab title="门店商品" name='0'></van-tab>
 		  <van-tab title="平台商品" name='1'></van-tab>
-		</van-tabs> -->
+		</van-tabs>
 			<van-search :value="SearchName" placeholder="搜索商品名称" @search="onSearch" @clear="onSearch"/>
 			<view class="default_class" v-if="tabledatalist.length===0">
 				<img src="../../static/img/image-default.png">
@@ -57,7 +57,7 @@
 		},
 		data() {
 			return {
-				active:'1',
+				active:'0',
 				SearchName:'',
 				tabledatalist:[],
 				id:null,		
@@ -235,7 +235,7 @@
 
 <style lang="less">
 	.chieflist_class{
-		
+		padding: 40rpx;
 		.default_class{
 			text-align: center;
 			padding-top: 40rpx;
@@ -252,7 +252,6 @@
 			}
 		}
 		.list_table_div{
-			padding: 40rpx;
 			.tablelist_div{
 				margin-bottom: 20rpx;
 				border-bottom: 2rpx solid #ccc;
