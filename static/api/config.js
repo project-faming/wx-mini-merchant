@@ -35,9 +35,9 @@ const request = function (options) {
 			success: res => {
 				if (res.data != '') {
 					if (res.data.code == 40003 || res.data.code == 40004) {
-						uni.navigateTo({
+						uni.reLaunch({
 							url: '/pages/login/login'
-						});
+						})
 					}
 				}
 				resolve(res);
