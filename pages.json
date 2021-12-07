@@ -203,12 +203,12 @@
 	        "selectedIconPath": "static/img/home@selected.png",
 	        "text": "首页"
 	      },
-	      {
-	        "pagePath": "pages/groupwork/groupwork",
-	        "iconPath": "static/img/category.png",
-	        "selectedIconPath": "static/img/category@selected.png",
-	        "text": "拼团"
-	      },
+	      // {
+	      //   "pagePath": "pages/groupwork/groupwork",
+	      //   "iconPath": "static/img/category.png",
+	      //   "selectedIconPath": "static/img/category@selected.png",
+	      //   "text": "拼团"
+	      // },
 	      {
 	        "pagePath": "pages/commodity/commodity",
 	        "iconPath": "static/img/commodity.png",
